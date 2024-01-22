@@ -19,9 +19,23 @@ dotnet sln <nome_solução>.sln add <pasta_projeto>/<arquivo>.csproj
 dotnet run 
 ```
 
+### Escolher a versão do .NET SDK
+
+```bash
+# criar um arquivo global.json
+dotnet new globaljson --sdk-version <versão> --force
+
+# cria projeto especificando a versão instalada do .NET SDK
+dotnet new console -o MeuApp -f .net5.0
+dotnet new console -o MeuApp -f .net6.0
+
+# cria projeto .NET 6/7 usando o método Main na classe Program
+dotnet new console -o MeuApp --use-program-main
+```
+
 ### Convenções
 
-* lastName: parâmetros de métodos, variáveis dentro de métodos  
-* LastName: namespaces, classe, properties, métodos  
-* _lastName: atributos internos da classe  
+* **lastName**: parâmetros de métodos, variáveis dentro de métodos  
+* **LastName**: namespaces, classe, properties, métodos  
+* **_lastName**: atributos internos da classe  
 
