@@ -200,3 +200,93 @@ public struct Pessoa
     }
 }
 ```
+
+---
+
+### 🔸 Enum
+
+```cs
+enum DiasDaSemana
+{
+    Segunda, 
+    Terca,
+    Quarta,
+    Quinta,
+    Sexta, 
+    Sabado,
+    Domingo 
+}
+
+enum CodigoErro
+{
+    Nenhum = 0,
+    Desconhecido = 1,
+    ConexaoFalhou = 100,
+    DadosInvalidos = 200
+}
+
+Console.WriteLine((int) DiasDaSemana.Segunda);
+```
+
+---
+
+### 🔸 Try-Catch
+
+```cs
+try
+{
+    int i = 23 / 0;
+}
+catch (Exception e)
+{
+    Console.WriteLine(e.Message);
+}
+finally
+{
+    Console.WriteLine("Concluido");
+}
+```
+
+---
+
+### 🔸 Tipos anônimos
+
+```cs
+var aluno = new
+{
+    Nome = "Maria",
+    Idade = 42
+};
+
+Console.WriteLine(aluno.Nome + " " + aluno.Idade);
+```
+
+---
+
+### 🔸 Partial Class
+
+* Declarar classes em arquivos diferentes que depois serão juntados.
+
+```cs
+public partial class MinhaPartialClass
+{
+    public DateTime DataNascimento { get; set; }
+    public string? Nome { get; set; }
+}
+
+public partial class MinhaPartialClass
+{
+    public TimeSpan CalculaIdade(DateTime DataNascimento)
+    {
+        return (DateTime.Now.Date - DataNascimento);
+    }
+
+    public TimeSpan DiferencaEntreDatas(DateTime data1, DateTime data2)
+    {
+        var diferenca = data1.Subtract(data2);
+        return diferenca;
+    }
+}
+
+Console.WriteLine(m.CalculaIdade(new DateTime(2001, 3, 13)));
+```
