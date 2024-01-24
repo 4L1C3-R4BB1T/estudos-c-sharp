@@ -83,9 +83,146 @@ class Quadrado : Forma, ICusto
     {
         return lado * lado;
     }
+
     public int GetCusto(int area)
     {
         return area * 10;
     }
 }
 ```
+
+---
+
+```cs
+Forma f = new Circulo(); // upcasting
+Circulo c = (Circulo) new Forma(); // downcasting
+
+Circulo c = f as Circulo; // downcasting
+
+if (forma is Circulo) { ... } // verifica se o downcast é possível
+```
+
+---
+
+### 🔸 Classe Abstrata
+
+```cs
+public abstract class MinhaClasse 
+{ 
+    public abstract tipo NomeMetodo();    
+}
+
+public abstract class Forma 
+{
+    public string Cor { get; set; }
+    public double Area { get; set; }
+    public double Perimetro { get; set; }
+
+    // métodos abstratos 
+    public abstract void CalcularArea();
+    public abstract void CalcularPerimetro();
+
+    public string Descricao()
+    {
+        return "Sou a classe abstrata Forma";
+    }
+}
+
+public class Quadrado : Forma
+{
+    public double Lado { get; set; }
+
+    public override void CalcularArea()
+    {
+        this.Area = Lado * Lado;
+    }
+
+    public override void CalcularPerimetro()
+    {
+        this.Perimetro = 4 * Lado;
+    }
+}
+```
+
+---
+
+### 🔸 Interfaces
+
+* Uma classe pode herdar múltiplas interfaces.
+
+```cs
+interface IControle
+{
+    void Desenhar();
+    void Exibir() {...};
+}
+
+interface IGrafico
+{
+    void Pintar();
+}
+
+public class Demo : IControle, IGrafico
+{
+    public void Desenhar() { ... }
+    public void Pintar() { ... }
+}
+```
+
+---
+
+### 🔸 Composição 
+
+* Relacionamento do tipo **"Tem um"**. Representa uma relação **todo - parte**.
+
+```cs
+public class Casa
+{
+    private readonly Telhado _telhado;
+    private readonly Alicerce _alicerce;
+
+    public Casa() 
+    {
+        _telhado = new Telhado();
+        _alicerce = new Alicerce();
+    }
+}
+
+public class Telhado { }
+public class Alicerce { }
+```
+
+---
+
+### 🔸 Agregação 
+
+* Relacionamento do tipo **"Tem um"**. Representa uma relação **todo - parte**.
+
+* A **parte** e o **todo** são independentes.
+
+* A **parte** pode existir sem o **todo**.
+
+```cs
+public class Professor 
+{
+    public string Nome { get; set; }
+    public string Disciplina { get; set; }
+}
+
+public class Departamento 
+{
+    public string Nome { get; set; }
+    public List<Professor> Professores { get; set; }
+
+    public void IncluirProfessor(Professor professor)
+    {
+        Professores.Add(professor);
+    }
+}
+```
+
+---
+
+### 🔸 Polimorfismo
+
+* Sobrecarga ou Sobrescrita.
