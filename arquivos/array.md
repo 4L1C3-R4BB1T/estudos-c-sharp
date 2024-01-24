@@ -104,3 +104,81 @@ var lista2 = lista1.Where(x => x.function()).ToList();
 
 var lista2 = lista1.FirstOrDefault();
 ```
+
+---
+
+### 🔸 Indexers
+
+```cs
+public int this[int index]
+{
+    get { ... }
+    set { ... }
+}
+
+
+public class Time 
+{
+    string[] valor = new string[10];
+
+    public string this[int i]
+    {
+        get 
+        {
+            if (i >= 0 && i < valor.Length)
+            {
+                return valor[i];
+            }
+            return "Erro";
+        }
+        set 
+        {
+            if (i >= 0 && i < valor.Length)
+            {
+                valor[i] = value;
+            }
+        }
+    }
+}
+
+Time t = new Time();
+Console.WriteLine(t[-1]);
+```
+
+---
+
+### 🔸 Classe Random
+
+```cs
+Random r = new Random(); // Random r = new Random(semente);
+
+Console.WriteLine(r.Next());
+Console.WriteLine(r.Next(20));
+Console.WriteLine(r.Next(10, 20));
+Console.WriteLine(r.NextDouble());
+```
+
+```cs
+Console.WriteLine("Sorteio da MegaSena\n");
+
+Random r = new Random();
+    
+int[] numerosSorteados = new int[6];
+    
+for (int i = 0; i < 6; i++)
+{
+    int numero;
+    
+    do
+    {
+        numero = r.Next(1, 61);
+    }
+    while (Array.IndexOf(numerosSorteados, numero) != -1);
+    
+    numerosSorteados[i] = numero;
+}
+    
+Array.Sort(numerosSorteados);
+    
+Console.WriteLine(string.Join(" ", numerosSorteados));
+```
