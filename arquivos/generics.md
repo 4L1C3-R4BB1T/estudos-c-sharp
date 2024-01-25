@@ -52,3 +52,24 @@ public class Pessoa
     }
 }
 ```
+
+---
+
+### 🔸 Coleções genéricas
+
+```cs
+Dictionary<TKey, TValue> dic = new Dictionary<TKey, TValue>();
+
+SortedDictionary<TKey, TValue> sortDic = new SortedDictionary<TKey, TValue>();
+
+HashSet<T> hashSet = new HashSet<T>();
+
+SortedSet<T> sortSet = new SortedSet<T>();
+
+Stack<T> stack = new Stack<T>();
+
+Queue<T> queue = new Queue<T>();
+
+// coleções somente de leitura
+ReadOnlyCollection readOnly = new ReadOnlyCollection<T>();
+```
