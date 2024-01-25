@@ -2,7 +2,7 @@
 
 ---
 
-### 🔸 
+### 🔸 Generics
 
 ```cs
 NomeTipo<T>
@@ -17,4 +17,38 @@ NomeTipo<T> where T : <restrição>
 public class ClasseGenerica<T> where T : struct { }
 
 public void MetodoGenerico<T>(T a) where T : class { }
+```
+
+---
+
+### 🔸 Equals e HashCode
+
+```cs
+public class Pessoa
+{
+    public Pessoa(int cpf, string nome)
+    {
+        CPF = cpf;
+        Nome = nome;
+    }
+
+    public int CPF { get; set; }
+    public string? Nome { get; set; }
+
+    public override bool Equals(object? obj)
+    {
+        if (obj == null ) return false;
+
+        if (obj is not Pessoa) return false;
+
+        var other = (Pessoa) obj;
+
+        return CPF.Equals(other.CPF);
+    }
+
+    public override int GetHashCode()
+    {
+        return CPF.GetHashCode();
+    }
+}
 ```
