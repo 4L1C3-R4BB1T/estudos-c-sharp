@@ -255,3 +255,38 @@ string nome = "teste";
 string stringInvertida = nome.InverteString();
 Console.WriteLine(stringInvertida);
 ```
+
+---
+
+### 🔸 LINQ - Language Integrated Query
+
+* **Sintaxe de Consulta**
+
+```cs
+using System.Linq;
+using System.Collections.Generic;
+
+List<string> nomes = new List<string>()
+{
+    "Ana", "Maria", "Pedro", "Lair", "Hugo"
+};
+
+var resultado = from m in nomes
+                where m.Contains('o')
+                select m;
+
+```
+
+* **Sintaxe de Método**
+
+```cs
+using System.Linq;
+using System.Collections.Generic;
+
+List<string> nomes = new List<string>()
+{
+    "Ana", "Maria", "Pedro", "Lair", "Hugo"
+};
+
+var resultado = nomes.Where(m => m.Contains('o'));
+```
