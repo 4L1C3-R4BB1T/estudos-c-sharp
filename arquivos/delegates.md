@@ -184,7 +184,7 @@ pedido.CriarPedido();
 
 ---
 
-### 🔸 EventHandler<TEventArgs>
+### 🔸 EventHandler\<TEventArgs>
 
 ```cs
 public class PedidoEventArgs : EventArgs
