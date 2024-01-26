@@ -85,3 +85,173 @@ public delegate void Action<in T>(T obj);
 
 public delegate TResult Func<in T1, in T2, ..., out TResult>(T1 arg, T2 arg, ...);  
 ```
+
+---
+
+### 🔸 Eventos
+
+* Publisher / Subscriber.
+
+```cs
+public delegate void PedidoEventHandler();
+
+public class Pedido
+{
+    public event PedidoEventHandler OnCriarPedido;
+
+    public void CriarPedido()
+    {
+        Console.WriteLine("Pedido criado !!!");
+
+        if (OnCriarPedido != null)
+        {
+            OnCriarPedido();
+        }
+    }
+}
+
+public class Email 
+{
+    public static void Enviar()
+    {
+        Console.WriteLine("Enviando um email");
+    }
+}
+
+public class SMS
+{
+    public static void Enviar()
+    {
+        Console.WriteLine("Enviando um SMS");
+    }
+}
+
+Console.WriteLine("Usando o evento OnCriarPedido");
+
+var pedido = new Pedido();
+
+pedido.OnCriarPedido += Email.Enviar;
+pedido.OnCriarPedido += SMS.Enviar;
+
+pedido.CriarPedido();
+```
+
+---
+
+### 🔸 EventHandler
+
+```cs
+public class Pedido
+{
+    public event EventHandler OnCriarPedido;
+
+    public void CriarPedido()
+    {
+        Console.WriteLine("Pedido criado !!!");
+
+        if (OnCriarPedido != null)
+        {
+            OnCriarPedido(this, EventArgs.Empty);
+        }
+    }
+}
+
+public class Email 
+{
+    public static void Enviar(object sender, EventArgs e)
+    {
+        Console.WriteLine("Enviando um email");
+    }
+}
+
+public class SMS
+{
+    public static void Enviar(object sender, EventArgs e)
+    {
+        Console.WriteLine("Enviando um SMS");
+    }
+}
+
+Console.WriteLine("Usando o evento OnCriarPedido");
+
+var pedido = new Pedido();
+
+pedido.OnCriarPedido += Email.Enviar;
+pedido.OnCriarPedido += SMS.Enviar;
+
+pedido.CriarPedido();
+```
+
+---
+
+### 🔸 EventHandler<TEventArgs>
+
+```cs
+public class PedidoEventArgs : EventArgs
+{
+    public string Email { get; set; }
+    public string Telefone { get; set; }
+}
+
+public class Pedido
+{
+    public event EventHandler<PedidoEventArgs> OnCriarPedido;
+
+    public void CriarPedido(string email, string fone)
+    {
+        Console.WriteLine("Pedido criado !!!");
+
+        if (OnCriarPedido != null)
+        {
+            OnCriarPedido(this, new PedidoEventArgs{ Email = email, Telefone = fone });
+        }
+    }
+}
+
+public class Email 
+{
+    public static void Enviar(object sender, PedidoEventArgs e)
+    {
+        Console.WriteLine($"Enviando um email para : {e.Email}");
+    }
+}
+
+public class SMS
+{
+    public static void Enviar(object sender, PedidoEventArgs e)
+    {
+        Console.WriteLine($"Enviando um SMS para : {e.Telefone}");
+    }
+}
+
+Console.WriteLine("Usando o evento OnCriarPedido");
+
+var pedido = new Pedido();
+
+pedido.OnCriarPedido += Email.Enviar;
+pedido.OnCriarPedido += SMS.Enviar;
+
+pedido.CriarPedido("email@email.com", "(11) 11111-1111");
+```
+
+---
+
+### 🔸 Métodos de extensão
+
+```cs
+public static class StringExtensions
+{
+    public static string InverteString(this string str)
+    {
+        char[] charArray = str.ToCharArray();
+        Array.Reverse(charArray);
+        return new string(charArray);
+    }
+}
+
+using <namespace_da_classe_StringExtensions>;
+
+string nome = "teste";
+string stringInvertida = nome.InverteString();
+Console.WriteLine(stringInvertida);
+```
