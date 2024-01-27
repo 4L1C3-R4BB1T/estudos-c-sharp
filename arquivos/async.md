@@ -122,3 +122,64 @@ public static async Task ExecutaCancelamentoComTimeout(int tempo)
 ```cs
 cancellationTokenSource.Cancel();
 ```
+
+---
+
+### 🔸 Tratamento de exceções
+
+```cs
+await LancaExceptionAsync();
+
+static async Task LancaExceptionAsync()
+{
+    // try-catch dentro do método assíncrono
+    try 
+    {
+        var primeiraTask = Task.Run(() => 
+        {
+            Task.Delay(1000);
+            throw new IndexOutOfRangeException("Exception lançada");
+        });
+        // aguarda a execução e garante a captura da exceção
+        await primeiraTask; 
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine(e.Message);
+    }
+}
+```
+
+* **Múltiplas Exceções**
+
+```cs
+await LancaMultiplasExcecoesAsync();
+
+static async Task LancaMultiplasExcecoesAsync()
+{
+    Task? tarefas = null;
+    try
+    {
+        var primeiraTask = Task.Run(() =>
+        {
+            Task.Delay(1000);
+            throw new IndexOutOfRangeException("Exceção 1");
+        });
+        var segundaTask = Task.Run(() =>
+        {
+            Task.Delay(1000);
+            throw new InvalidOperationException("Exceção 2");
+        });
+        tarefas = Task.WhenAll(primeiraTask, segundaTask);
+        await tarefas;
+    }
+    catch
+    {
+        AggregateException TodasExceptions = tarefas.Exception;
+        foreach (var e in TodasExceptions.InnerExceptions)
+        {
+            Console.WriteLine(e.GetType().ToString());
+        }
+    }
+}
+```
