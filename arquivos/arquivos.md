@@ -117,3 +117,44 @@ di.GetFiles();
 // criar subdiretório
 di.CreateSubdirectory();
 ```
+
+---
+
+### 🔸 Path
+
+```cs
+string caminho = "C:\\MeusArquivos\\arquivo.txt";
+char dirSeparator = Path.DirectorySeparatorChar;
+string[] diretorios = caminho.Split(dirSeparator);
+
+Path.Combine(path1, path2);
+
+Path.GetDirectoryName(path);
+```
+
+---
+
+### 🔸 Streams
+
+```cs
+// FileStream
+FileStream fs = new FileStream(caminho, FileMode.Open, FileAccess.Read, FileShare.Read);
+
+// File 
+FileStream fs = File.Open(caminho, FileMode.Open, FileAccess.Read, FileShare.Read);
+
+// FileInfo
+FileInfo fi = new FileInfo(caminho);
+FileStream fs = fi.Open(FileMode.Open, FileAccess.Read, FileShareRead);
+```
+
+* Bloco **using** *(garante que os objetos sejam fechados automaticamente quando o bloco terminar de ser executado)*
+
+```cs
+using (FileStream fs = new FileStream(caminho, FileMode.Open))
+{
+    // operações de leitura e gravação no arquivo usando o objeto FileStream
+}
+
+using FileStream fs = new FileStream(caminho, FileMode.Open);
+```
