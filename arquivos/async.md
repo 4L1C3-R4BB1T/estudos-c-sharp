@@ -183,3 +183,82 @@ static async Task LancaMultiplasExcecoesAsync()
     }
 }
 ```
+
+---
+
+### 🔸 Streams Assíncronos
+
+```cs
+await foreach (var mes in GeraMeses())
+{
+    Console.WriteLine(mes);
+}
+
+static private async IAsyncEnumerable<string> GeraMeses()
+{
+    yield return "janeiro";
+    yield return "fevereiro";
+    await Task.Delay(2000);
+    yield return "março";
+    yield return "abril";
+}
+```
+
+---
+
+### 🔸 Semáforos
+
+```cs
+Semaphore semaforo = new Semaphore(initialCount: 1, maximumCount: 3);
+
+static Semaphore semaphore;
+
+static void Main()
+{
+    // cria um semáforo que permite no máximo 2 threads
+    semaphore = new Semaphore(1, 2);
+
+    Console.WriteLine("Incluiu a thread no semaforo");
+    // inclui a thread no semaforo usando WaitOne
+    semaphore.WaitOne();
+
+    // executa o metodo 
+    Console.WriteLine("Executou o método");
+
+    // libera a thread do semaforo 
+    semaphore.Release();
+
+    Console.WriteLine("Liberou a thread do semaforo");
+}
+```
+
+```cs
+SemaphoreSlim semaforo = new SemaphoreSlim(int initialCount);
+
+private static SemaphoreSlim semaforoSlim = new SemaphoreSlim(4);
+
+private static void Main(string[] args)
+{
+    for (int i = 1; i <= 6; i++)
+    {
+        string threadName = "Thread " + i;
+        int espera = 2 + 2 * i;
+
+        var t = new Thread(() => AcessarBancoDados(threadName, espera));
+
+        t.Start();
+    }
+}
+
+private static void AcessarBancoDados(string nome, int seconds)
+{
+    Console.WriteLine($"{nome} aguardando acesso ao banco de dados...");
+    semaforoSlim.Wait();
+
+    Console.WriteLine($"{nome} autorizada a acessar o banco de dados");
+    Sleep(TimeSpan.FromSeconds(seconds));
+
+    Console.WriteLine($"{nome} concluida");
+    semaforoSlim.Release();
+}
+```
