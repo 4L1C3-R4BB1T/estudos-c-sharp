@@ -10,7 +10,8 @@
 🔸 [Delegates, Expressão Lambda, Eventos e LINQ](https://github.com/4L1C3-R4BB1T/estudos-c-sharp/blob/main/arquivos/delegates.md)  
 🔸 [Arquivos, Diretórios e Streams](https://github.com/4L1C3-R4BB1T/estudos-c-sharp/blob/main/arquivos/arquivos.md)      
 🔸 [Programação Assíncrona](https://github.com/4L1C3-R4BB1T/estudos-c-sharp/blob/main/arquivos/async.md)  
-🔸 [Novidades da Linguagem](https://github.com/4L1C3-R4BB1T/estudos-c-sharp/blob/main/arquivos/novidades.md)    
+🔸 [Novidades da Linguagem](https://github.com/4L1C3-R4BB1T/estudos-c-sharp/blob/main/arquivos/novidades.md)      
+🔸 [LINQ](https://github.com/4L1C3-R4BB1T/estudos-c-sharp/blob/main/arquivos/linq.md)    
 
 ---
 
