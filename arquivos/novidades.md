@@ -91,3 +91,29 @@ DateOnly dateOnly = new DateOnly(2024, 1, 28);
 TimeOnly timeOnly = new TimeOnly(); // apenas hora - hh, mm, ss, ms
 TimeOnly timeOnly = new TimeOnly(10, 27);
 ```
+
+---
+
+### 🔸 Record
+
+```cs
+public record Pessoa(string nome, string sobrenome);
+
+public record Pessoa
+{
+    public string Nome { get; init; }
+    public string Sobrenome { get; init; }
+}
+```
+
+---
+
+### 🔸 Init-Only
+
+```cs
+public class Pessoa
+{
+    public string Nome { get; init; }
+    public string Sobrenome { get; init; }
+}
+```
