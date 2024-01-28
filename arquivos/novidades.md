@@ -21,3 +21,46 @@ List<int> lista1 = [1, 2, 3];
 List<int> lista2 = [4, 5, 6];
 List<int> listaCombinada = [.. lista1, .. lista2];
 ```
+
+---
+
+### 🔸 Construtores primários
+
+```cs
+public class Aluno(string nome, string sobrenome, int nota)
+{
+    public string Nome { get; set; } = nome;
+    public string Sobrenome { get; set; } = sobrenome;
+    public int Nota { get; set; } = nota;
+
+    public string NomeCompleto => $"{Nome} {Sobrenome}";
+}
+```
+
+---
+
+### 🔸 Required members
+
+```cs
+public class Pessoa
+{
+    public required string Nome { get; set; }
+    public required int Idade { get; set; }
+
+    [SetsRequiredMembers]
+    public Pessoa(string nome, int idade)
+    {
+        Nome = nome;
+        Idade = idade;
+    }
+}
+```
+
+---
+
+### 🔸 Extended nameof scope
+
+```cs
+[MeuAtributo(nameof(meuParametro))]
+public void MeuMetodoComParametros(string meuParametro) { }
+```
