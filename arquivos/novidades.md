@@ -64,3 +64,30 @@ public class Pessoa
 [MeuAtributo(nameof(meuParametro))]
 public void MeuMetodoComParametros(string meuParametro) { }
 ```
+
+---
+
+### 🔸 Raw string literal
+
+```cs
+var texto = """ 
+            {
+                "nome": "Maria",
+                "pais": "Brasil"
+            }
+            """;
+```
+
+---
+
+```cs
+ArgumentNullException.ThrowIfNull(variavel);
+```
+
+```cs
+DateOnly dateOnly = new DateOnly(); // apenas data - yyyy, mm, dd
+DateOnly dateOnly = new DateOnly(2024, 1, 28);
+
+TimeOnly timeOnly = new TimeOnly(); // apenas hora - hh, mm, ss, ms
+TimeOnly timeOnly = new TimeOnly(10, 27);
+```
