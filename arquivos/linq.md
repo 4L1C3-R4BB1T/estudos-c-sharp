@@ -60,3 +60,14 @@ List<int> lista1 = new List<int>() {1, 2, 3, 4, 5, 6};
 List<int> lista2 = new List<int>() {1, 3, 5, 8, 9, 10};
 var resultado = lista1.Union(lista2).ToList();
 ```
+
+```cs
+List<int> lista = new List<int>() {10, 2, 5, 1, 8};
+var resultado = lista.OrderBy(n => n).ToList();
+var resultado = lista.OrderByDescending(n => n).ToList();
+```
+
+```cs
+int[] numeros = {1, 2, 3, 4, 5, 6};
+var resultado = numeros.Reverse();
+```
