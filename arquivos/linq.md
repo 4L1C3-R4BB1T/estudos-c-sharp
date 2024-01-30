@@ -10,11 +10,7 @@
 using System.Linq;
 using System.Collections.Generic;
 
-List<string> frutas = new List<string>()
-{
-    "Banana", "Manga", "Laranja"
-};
-
+List<string> frutas = new List<string>() { "Banana", "Manga", "Laranja" };
 var resultado = from f in frutas
                 where f.Contains('r')
                 select f;
@@ -24,11 +20,7 @@ var resultado = from f in frutas
 * **Sintaxe de Método**
 
 ```cs
-List<string> frutas = new List<string>()
-{
-    "Banana", "Manga", "Laranja"
-};
-
+List<string> frutas = new List<string>() { "Banana", "Manga", "Laranja" };
 var resultado = frutas.Where(f => f.Contains('r'));
 ```
 
@@ -70,4 +62,25 @@ var resultado = lista.OrderByDescending(n => n).ToList();
 ```cs
 int[] numeros = {1, 2, 3, 4, 5, 6};
 var resultado = numeros.Reverse();
+``` 
+
+```cs
+int[] numeros = {1, 2, 3, 4, 5, 6};
+var resultado = numeros.Aggregate((n1, n2) => n1 * n2);
+```
+
+```cs
+List<string> frutas = new List<string>() { "Banana", "Manga", "Laranja" };
+var resultado = frutas.Count();
+```
+
+```cs
+int[] numeros = {1, 2, 3, 4, 5, 6};
+var resultado = numeros.Sum();
+```
+
+```cs
+int[] numeros = {1, 2, 3, 4, 5, 6};
+var resultado = numeros.Max(n => n);
+var resultado = numeros.Min(n => n);
 ```
