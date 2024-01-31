@@ -84,3 +84,32 @@ int[] numeros = {1, 2, 3, 4, 5, 6};
 var resultado = numeros.Max(n => n);
 var resultado = numeros.Min(n => n);
 ```
+
+```cs
+// agrupa funcionários por cidade
+var funcPorCidade = funcionarios.ToLookup(x =>.Cidade);
+```
+
+```cs
+// retorna os n primeiros valores
+List<int> lista = new List<int>() {1, 2, 3, 4, 5, 6};
+var resultado = lista.Take(4).ToList();
+```
+
+```cs
+// retorna os valores que satisfazem a condição
+List<int> lista = new List<int>() {1, 2, 3, 4, 5, 6};
+var resultado = lista.TakeWhile(n => n < 3).ToList();
+```
+
+```cs
+// pula os n primeiros valores
+List<int> lista = new List<int>() {1, 2, 3, 4, 5, 6};
+var resultado = lista.Skip(4).ToList();
+```
+
+```cs
+// pula valores que satisfazem a condição
+List<int> lista = new List<int>() {1, 2, 3, 4, 5, 6};
+var resultado = lista.SkipWhile(n => n < 4).ToList();
+```
