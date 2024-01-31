@@ -113,3 +113,19 @@ var resultado = lista.Skip(4).ToList();
 List<int> lista = new List<int>() {1, 2, 3, 4, 5, 6};
 var resultado = lista.SkipWhile(n => n < 4).ToList();
 ```
+
+```cs
+List<int> lista = new List<int> {1, 2, 3, 4};
+var resultado = lista.Append(5).ToList();
+```
+
+```cs
+List<int> lista = new List<int> {1, 2, 3, 4};
+var resultado = lista.Prepend(5).ToList();
+```
+
+```cs
+List<int> numeros = new List<int> {1, 2, 3, 4};
+string[] palavras = {"Um", "Dois", "Três", "Quatro"};
+var resultado = numeros.Zip(palavras, (n, s) => $"{n} - {s}");
+```
